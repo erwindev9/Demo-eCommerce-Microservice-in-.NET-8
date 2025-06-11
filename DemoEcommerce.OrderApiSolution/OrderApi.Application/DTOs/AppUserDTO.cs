@@ -7,7 +7,7 @@ namespace OrderApi.Application.DTOs
         int Id,
         [Required] string Name,
         [Required] string TelephoneNumber,
-        [Required] string Adress,
+        [Required] string Address,
         [Required, EmailAddress] string Email,
         [Required] string Password,
         [Required] string Role

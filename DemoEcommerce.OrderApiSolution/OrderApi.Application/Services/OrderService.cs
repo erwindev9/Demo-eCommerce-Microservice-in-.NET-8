@@ -30,15 +30,15 @@ namespace OrderApi.Application.Services
         {
             //Call product api using httpclient
             //Redirect this call to the api gateway since product api is not response to outsiders
-            var getUser = await httpClient.GetAsync($"http://localhost:5000/api/Authentication/{userId}");
+            var getUser = await httpClient.GetAsync($"/api/Authentication/{userId}");
 
             if (!getUser.IsSuccessStatusCode)
             {
                 return null!;
             }
-            var product = await getUser.Content.ReadFromJsonAsync<AppUserDTO>();
+            var user = await getUser.Content.ReadFromJsonAsync<AppUserDTO>();
 
-            return product!;
+            return user!;
         }
 
         //get orders by client id
@@ -83,7 +83,7 @@ namespace OrderApi.Application.Services
                 appUserDTO?.Id ?? 0,
                 appUserDTO?.Name ?? "Unknown",
                 appUserDTO?.Email ?? "N/A",
-                appUserDTO?.Adress ?? "N/A",
+                appUserDTO?.Address ?? "N/A",
                 appUserDTO?.TelephoneNumber ?? "N/A",
                 appUserDTO?.Name ?? "Unknown",
                 order.PurchaseQuantity,
